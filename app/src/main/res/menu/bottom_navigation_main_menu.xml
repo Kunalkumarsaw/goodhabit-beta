@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_nav_tools_main"
+        android:icon="@drawable/tools_icon_main"
+        android:title="Tools"/>
+    <item
+        android:id="@+id/bottom_nav_tracking_main"
+        android:icon="@drawable/tracking_icon_main"
+        android:title="Tracking"/>
+    <item
+        android:id="@+id/bottom_nav_update_main"
+        android:icon="@drawable/update_icon_main"
+        android:title="Update"/>
+    <item
+        android:id="@+id/bottom_nav_setting_main"
+        android:icon="@drawable/setting_icon_main"
+        android:title="Setting"/>
+
+</menu>
