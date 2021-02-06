@@ -15,6 +15,7 @@
         android:id="@+id/navigationBottomMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="@dimen/_10sdp"
         android:background="?android:attr/windowBackground"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation_main_menu" />

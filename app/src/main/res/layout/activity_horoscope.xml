@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".update.HoroscopeActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <GridView
+                android:id="@+id/gridViewHoroscope"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_300sdp"
+                android:numColumns="4"
+                android:clickable="false"
+                app:layout_constraintTop_toTopOf="parent"
+                android:focusable="false" />
+
+            <soup.neumorphism.NeumorphCardView
+                android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:neumorph_shadowElevation="@dimen/_4sdp"
+                app:neumorph_shapeType="pressed">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewDateHoroscope"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:gravity="center"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/_15ssp"
+                        android:textStyle="bold"
+                        tools:text="February 6, 2021" />
+
+                    <TextView
+                        android:id="@+id/textViewDataHoroscope"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/_15ssp"
+                        android:text="@string/click_on_your_zordic_sign" />
+                </LinearLayout>
+
+            </soup.neumorphism.NeumorphCardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

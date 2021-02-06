@@ -3,11 +3,189 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
     tools:context=".update.updateFragment">
-
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:padding="@dimen/_6sdp"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <soup.neumorphism.NeumorphCardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:id="@+id/weatherCardUpdate"
+                app:neumorph_backgroundColor="@color/background"
+                app:neumorph_shadowColorDark="@color/dark_shadow"
+                app:neumorph_shadowColorLight="@color/light_shadow"
+                app:neumorph_shadowElevation="@dimen/_5sdp"
+                app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                app:neumorph_shapeType="flat"
+                app:layout_constraintTop_toTopOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/textViewLabelHumid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textColor="@color/secondary_text"
+                        android:text="@string/humidity"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_15ssp"
+                        android:id="@+id/textViewHumidity"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textViewLabelHumid"
+                        android:textColor="@color/primary"
+                        tools:text="96%"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_40ssp"
+                        android:textStyle="bold"
+                        android:id="@+id/textViewTemp"
+                        android:layout_marginStart="@dimen/_25sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewLabelHumid"
+                        android:textColor="@color/primary_text"
+                        tools:text="97\u00B0c"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        app:layout_constraintStart_toStartOf="parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_10ssp"
+                            android:textColor="@color/secondary_text"
+                            android:text="@string/sunrise"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_12ssp"
+                            android:id="@+id/textViewSunrise"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:textColor="@color/primary_text"
+                            android:inputType="time"
+                            tools:text="6:25"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_10ssp"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:textColor="@color/secondary_text"
+                            android:text="@string/sunset"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_12ssp"
+                            android:id="@+id/textViewSunset"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:textColor="@color/primary_text"
+                            android:inputType="time"
+                            tools:text="7:35"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:layout_constraintTop_toTopOf="parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewWeatherLocation"
+                            android:textSize="@dimen/_15ssp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:textColor="@color/primary_text"
+                            tools:text="Udaypur"/>
+                        <ImageView
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:id="@+id/imageViewWeather"
+                            android:scaleType="center"
+                            tools:ignore="ContentDescription"
+                            android:layout_gravity="center"
+                            android:src="@drawable/weathericondemo"
+                            android:contentDescription="TODO" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewWeatherDescription"
+                            android:textSize="@dimen/_13ssp"
+                            android:textColor="@color/secondary_text"
+                            tools:text="Hazy sunshine"/>
+                    </LinearLayout>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </soup.neumorphism.NeumorphCardView>
+            <soup.neumorphism.NeumorphCardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_90sdp"
+                android:id="@+id/horoscopeCardUpdate"
+                app:neumorph_backgroundColor="@color/background"
+                app:neumorph_shadowColorDark="@color/dark_shadow"
+                app:neumorph_shadowColorLight="@color/light_shadow"
+                app:neumorph_shadowElevation="@dimen/_5sdp"
+                app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                app:layout_constraintTop_toBottomOf="@id/weatherCardUpdate">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/primary_text"
+                        android:text="Horoscope"
+                        app:layout_constraintEnd_toStartOf="@+id/horoscopeButtonUpdate"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textSize="@dimen/_22ssp"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+                    <soup.neumorphism.NeumorphCardView
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:id="@+id/horoscopeButtonUpdate"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:neumorph_shapeType="basin"
+                        app:neumorph_shadowElevation="@dimen/_3sdp"
+                        app:layout_constraintEnd_toEndOf="parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            tools:ignore="ContentDescription"
+                            android:src="@drawable/arrow_forward_ios"
+                            android:scaleType="centerInside"/>
+
+                    </soup.neumorphism.NeumorphCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </soup.neumorphism.NeumorphCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </FrameLayout>

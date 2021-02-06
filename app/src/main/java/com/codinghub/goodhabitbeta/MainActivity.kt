@@ -5,11 +5,11 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.codinghub.goodhabitbeta.update.updateFragment
 import com.codinghub.goodhabitbeta.databinding.ActivityMainBinding
 import com.codinghub.goodhabitbeta.setting.SettingsFragment
 import com.codinghub.goodhabitbeta.tools.ToolsFragment
 import com.codinghub.goodhabitbeta.tracking.TrackingFragment
-import com.codinghub.goodhabitbeta.update.updateFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.bottom_nav_tools_main -> {selectedFragment=ToolsFragment() }
             R.id.bottom_nav_tracking_main -> {selectedFragment=TrackingFragment()}
-            R.id.bottom_nav_update_main-> {selectedFragment=updateFragment()}
+            R.id.bottom_nav_update_main-> {selectedFragment= updateFragment()
+            }
             R.id.bottom_nav_setting_main-> {selectedFragment=SettingsFragment()}
         }
         if (selectedFragment != null) {
