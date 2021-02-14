@@ -40,8 +40,7 @@ class updateFragment : Fragment() {
     private var MY_PERMISSIONS_REQUEST_LOCATION =101
     private var provider : String ? = null
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    val sdf = SimpleDateFormat("h:mm a",Locale.getDefault(Locale.Category.FORMAT))
+    val sdf = SimpleDateFormat("h:mm a",Locale.getDefault())
 
 
 
@@ -78,29 +77,46 @@ class updateFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(UpdateViewModel::class.java)
-        if (context?.let {
-                ActivityCompat.checkSelfPermission(
-                    it,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                )
-            } != PackageManager.PERMISSION_GRANTED && context?.let {
-                ActivityCompat.checkSelfPermission(
-                    it,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                )
-            } != PackageManager.PERMISSION_GRANTED
-        ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            ActivityCompat.requestPermissions(context as Activity,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),MY_PERMISSIONS_REQUEST_LOCATION)
-        }
+//        if (context?.let {
+//                ActivityCompat.checkSelfPermission(
+//                    it,
+//                    Manifest.permission.ACCESS_FINE_LOCATION
+//                )
+//            } != PackageManager.PERMISSION_GRANTED && context?.let {
+//                ActivityCompat.checkSelfPermission(
+//                    it,
+//                    Manifest.permission.ACCESS_COARSE_LOCATION
+//                )
+//            } != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            ActivityCompat.requestPermissions(context as Activity,
+//                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),MY_PERMISSIONS_REQUEST_LOCATION)
+//        }
         if (gps_enabled) {
+            if (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return
+            }
             gps_loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER)
         }
         // TODO: Use the ViewModel
@@ -165,28 +181,6 @@ class updateFragment : Fragment() {
 
     }
     private fun getDateString(time: Long) : String = sdf.format(time * 1000L)
-
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-       when(requestCode){
-           MY_PERMISSIONS_REQUEST_LOCATION->{
-               if (grantResults.isNotEmpty() && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                   if (context?.let {
-                           ContextCompat.checkSelfPermission(
-                               it,
-                               Manifest.permission.ACCESS_FINE_LOCATION)
-                       } ==PackageManager.PERMISSION_GRANTED){
-                       provider?.let { lm.requestLocationUpdates(it,400,1, requireContext()) }
-                           }
-               }
-               return
-           }
-       }
-    }
 
 }
 

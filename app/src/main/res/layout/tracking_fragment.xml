@@ -3,12 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/trackingFragment"
     android:background="#EDAB9F"
     tools:context=".tracking.TrackingFragment">
 
     <TextView
         android:layout_width="match_parent"
+        android:gravity="center"
+        android:id="@+id/steps"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20ssp"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:text="Total Steps =" />
+
+
 
 </FrameLayout>
