@@ -22,6 +22,7 @@ import com.codinghub.goodhabitbeta.setting.SettingsFragment
 import com.codinghub.goodhabitbeta.tools.ToolsFragment
 import com.codinghub.goodhabitbeta.tracking.TrackingFragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.fitness.Fitness
 import com.google.android.gms.fitness.FitnessOptions
 import com.google.android.gms.fitness.data.DataType
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -220,6 +221,23 @@ class MainActivity : AppCompatActivity() {
 
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        unsubscribe()
+    }
+    fun unsubscribe(){
+        Fitness.getRecordingClient(this, GoogleSignIn.getLastSignedInAccount(this))
+            // This example shows unsubscribing from a DataType. A DataSource should be used where the
+            // subscription was to a DataSource. Alternatively, a Subscription object can be used.
+            .unsubscribe(DataType.TYPE_STEP_COUNT_DELTA)
+            .addOnSuccessListener {
+                Log.i(TAG,"Successfully unsubscribed.")
+            }
+            .addOnFailureListener { e->
+                Log.w(TAG, "Failed to unsubscribe.")
+            }
     }
 
     private fun showDialog(

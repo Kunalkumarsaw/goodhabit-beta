@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.codinghub.goodhabitbeta.R
+import kotlinx.android.synthetic.main.tools_fragment.*
 
 class ToolsFragment : Fragment() {
 

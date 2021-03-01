@@ -3,11 +3,13 @@ package com.codinghub.goodhabitbeta.tracking
 import android.app.Activity
 import kotlinx.android.synthetic.main.tracking_fragment.*
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.codinghub.goodhabitbeta.databinding.TrackingFragmentBinding
@@ -17,18 +19,22 @@ import com.google.android.gms.common.Scopes
 import com.google.android.gms.common.api.Scope
 import com.google.android.gms.fitness.Fitness
 import com.google.android.gms.fitness.FitnessOptions
+import com.google.android.gms.fitness.data.DataSet
 import com.google.android.gms.fitness.data.DataType
 import com.google.android.gms.fitness.data.Field
 import com.google.android.gms.fitness.request.DataReadRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
 import java.util.*
-
+import java.util.concurrent.TimeUnit
 
 
 class TrackingFragment : Fragment() {
-    val TAG = "StepCounter"
+    val TAG = "TrackingFragment"
     lateinit var binding: TrackingFragmentBinding
     private var totalSteps: String = "0"
     private val MY_PERMISSIONS_REQUEST_ACTIVITY_RECOGNITION = 101
@@ -95,11 +101,12 @@ class TrackingFragment : Fragment() {
             )
         } else {
             Log.d(TAG, "Gone for getting data ")
-            GlobalScope.launch(Dispatchers.IO){
+            GlobalScope.launch(Dispatchers.IO) {
                 subscribe()
-                readData()
+                accessGoogleFit()
             }
-            steps.text= "Total Steps = "+ totalSteps
+
+            steps.text = "Total Steps = " + totalSteps
         }
     }
 
@@ -107,7 +114,7 @@ class TrackingFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         when (resultCode) {
             Activity.RESULT_OK -> when (requestCode) {
-                GOOGLE_FIT_PERMISSIONS_REQUEST_CODE -> readData()
+                GOOGLE_FIT_PERMISSIONS_REQUEST_CODE -> accessGoogleFit()
                 else -> {
                     // Result wasn't from Google Fit
                 }
@@ -124,7 +131,7 @@ class TrackingFragment : Fragment() {
         // To create a subscription, invoke the Recording API. As soon as the subscription is
         // active, fitness data will start recording.
         Fitness.getRecordingClient(requireContext(), getGoogleAccount())
-            .subscribe(DataType.TYPE_STEP_COUNT_CUMULATIVE)
+            .subscribe(DataType.TYPE_STEP_COUNT_DELTA)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.i(TAG, "Successfully subscribed!")
@@ -134,34 +141,73 @@ class TrackingFragment : Fragment() {
             }
     }
 
+    fun unsubscribe() {
+        Fitness.getRecordingClient(requireContext(), getGoogleAccount())
+            // This example shows unsubscribing from a DataType. A DataSource should be used where the
+            // subscription was to a DataSource. Alternatively, a Subscription object can be used.
+            .unsubscribe(DataType.TYPE_STEP_COUNT_DELTA)
+            .addOnSuccessListener {
+                Log.i(TAG, "Successfully unsubscribed.")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Failed to unsubscribe.")
+            }
+    }
+
+
     private fun getGoogleAccount() = GoogleSignIn.getLastSignedInAccount(context)
 
     private fun accessGoogleFit() {
         val c = Calendar.getInstance()
-        val startSeconds = c.timeInMillis
-        c.set(Calendar.DAY_OF_WEEK, c.get(Calendar.DAY_OF_WEEK - 1))
-        val endSeconds = c.timeInMillis
-        //  val start = end.minusYears(1)
-        // val endSeconds = end.atZone(ZoneId.systemDefault()).toEpochSecond()
-        //  val startSeconds = start.atZone(ZoneId.systemDefault()).toEpochSecond()
+        val endTime = c.time.time
+        c.add(Calendar.DAY_OF_YEAR,-2)
+        val startTime = c.time.time
+//        val endTime = LocalDateTime.now().atZone(ZoneId.systemDefault())
+//        val startTime = endTime.minusWeeks(1)
+//        Log.i(TAG, "Range Start: $startTime")
+//        Log.i(TAG, "Range End: $endTime")
+
 
         val readRequest = DataReadRequest.Builder()
             .aggregate(DataType.AGGREGATE_STEP_COUNT_DELTA)
-            .setTimeRange(startSeconds, endSeconds, java.util.concurrent.TimeUnit.SECONDS)
-            .bucketByTime(1, java.util.concurrent.TimeUnit.DAYS)
+            .bucketByTime(1,TimeUnit.DAYS)
+            .setTimeRange(startTime, endTime, TimeUnit.MILLISECONDS)
             .build()
-        val account = GoogleSignIn.getLastSignedInAccount(context)
-        Fitness.getHistoryClient(requireContext(), account)
+        Fitness.getHistoryClient(requireContext(), getGoogleAccount())
             .readData(readRequest)
-            .addOnSuccessListener {
+            .addOnSuccessListener { response ->
                 // Use response data here
                 Log.i(TAG, "OnSuccess()")
+                // The aggregate query puts datasets into buckets, so flatten into a single list of datasets
+                for (dataSet in response.buckets.flatMap { it.dataSets }) {
+                    dumpDataSet(dataSet)
+                }
             }
             .addOnFailureListener { e -> Log.d(TAG, "OnFailure()", e) }
     }
 
+    fun dumpDataSet(dataSet: DataSet) {
+        Log.i(TAG, "Data returned for Data type: ${dataSet.dataType.name}")
+        for (dp in dataSet.dataPoints) {
+            Log.i(TAG, "Data point:")
+            Log.i(TAG, "\tType: ${dp.dataType.name}")
+
+            Log.i(TAG, "\tStart: ${dp.getStartTime(TimeUnit.DAYS)}")
+            Log.i(TAG, "\tEnd: ${dp.getEndTime(TimeUnit.DAYS)}")
+            for (field in dp.dataType.fields) {
+                Log.i(TAG, "\tField: ${field.name.toString()} Value: ${dp.getValue(field)}")
+                if (field == Field.FIELD_STEPS) {
+                    totalSteps = dp.getValue(field).toString()
+                    steps.text =totalSteps
+                }
+
+            }
+        }
+    }
+
+
     private fun readData() {
-        Fitness.getHistoryClient(context, getGoogleAccount())
+        Fitness.getHistoryClient(requireContext(), getGoogleAccount())
             .readDailyTotal(DataType.TYPE_STEP_COUNT_DELTA)
             .addOnSuccessListener { dataSet ->
                 val total = when {

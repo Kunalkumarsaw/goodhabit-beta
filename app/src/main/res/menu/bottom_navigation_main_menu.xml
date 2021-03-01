@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/bottom_nav_tools_main"
-        android:icon="@drawable/tools_icon_main"
-        android:title="Tools"/>
+        android:icon="@drawable/home_nav"
+        android:title="Home"/>
     <item
         android:id="@+id/bottom_nav_tracking_main"
-        android:icon="@drawable/tracking_icon_main"
-        android:title="Tracking"/>
+        android:icon="@drawable/health_nav"
+        android:title="Health"/>
     <item
         android:id="@+id/bottom_nav_update_main"
-        android:icon="@drawable/update_icon_main"
+        android:icon="@drawable/update_nav"
         android:title="Update"/>
     <item
         android:id="@+id/bottom_nav_setting_main"
-        android:icon="@drawable/setting_icon_main"
+        android:icon="@drawable/settings_nav"
         android:title="Setting"/>
 
 </menu>

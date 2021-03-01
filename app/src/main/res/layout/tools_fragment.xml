@@ -3,12 +3,262 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D6EFB3"
+    android:background="@color/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".tools.ToolsFragment">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/textClockCardViewTools"
+            android:layout_height="@dimen/_110sdp">
+
+            <TextClock
+                android:id="@+id/textClockTools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:format12Hour="hh:mm:ss a"
+                android:layout_marginTop="@dimen/_20sdp"
+                tools:text="04:20 AM"
+                android:gravity="center"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_40ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dateClockTools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/galindo"
+                android:gravity="center"
+                android:text="@string/hello_kunal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/_18ssp" />
+        </LinearLayout>
+
+        <soup.neumorphism.NeumorphCardView
+            android:layout_width="match_parent"
+            android:layout_height="581dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="-15dp"
+            android:layout_marginEnd="-15dp"
+            app:neumorph_shadowElevation="@dimen/_4sdp"
+            app:neumorph_backgroundColor="@color/background"
+            app:neumorph_shadowColorLight="#7090909F"
+            app:neumorph_shadowColorDark="@color/dark_shadow"
+            app:neumorph_shapeType="pressed"
+            app:layout_constraintTop_toBottomOf="@+id/textClockCardViewTools">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_10sdp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <soup.neumorphism.NeumorphCardView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:id="@+id/timeTrackingCardTools"
+                        app:neumorph_backgroundColor="#FFF"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/_5sdp"
+                        app:neumorph_shadowColorDark="@color/dark_shadow"
+                        app:neumorph_shadowColorLight="@color/light_shadow"
+                        app:neumorph_shadowElevation="@dimen/_3sdp"
+                        app:neumorph_shapeAppearance="@style/NeumorphismCard">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                tools:ignore="ContentDescription"
+                                android:src="@drawable/time_tracking"
+                                android:id="@+id/imageTimeTrackingTools"
+                                app:layout_constraintTop_toTopOf="parent"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/primary_text"
+                                android:text="Time\nTracking"
+                                app:layout_constraintTop_toBottomOf="@+id/imageTimeTrackingTools"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:textSize="@dimen/_10ssp"
+                                android:gravity="center"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </soup.neumorphism.NeumorphCardView>
+                    <soup.neumorphism.NeumorphCardView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:id="@+id/waterReminderCardTools"
+                        app:neumorph_backgroundColor="#FFF"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/_5sdp"
+                        app:neumorph_shadowColorDark="@color/dark_shadow"
+                        app:neumorph_shadowColorLight="@color/light_shadow"
+                        app:neumorph_shadowElevation="@dimen/_3sdp"
+                        app:neumorph_shapeAppearance="@style/NeumorphismCard">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                android:src="@drawable/water_reminder"
+                                tools:ignore="ContentDescription"
+                                android:id="@+id/imageWaterTrackingTools"
+                                app:layout_constraintTop_toTopOf="parent"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/primary_text"
+                                android:text="Water\nReminder"
+                                app:layout_constraintTop_toBottomOf="@+id/imageWaterTrackingTools"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:textSize="@dimen/_10ssp"
+                                android:gravity="center"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </soup.neumorphism.NeumorphCardView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <soup.neumorphism.NeumorphCardView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:id="@+id/smartAlarmCardTools"
+                        app:neumorph_backgroundColor="@color/background"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/_5sdp"
+                        app:neumorph_shadowColorDark="@color/dark_shadow"
+                        app:neumorph_shadowColorLight="#FFF"
+                        app:neumorph_shadowElevation="@dimen/_2sdp"
+                        app:neumorph_shapeAppearance="@style/NeumorphismCard">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="@dimen/_150sdp"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/smart_alarm"
+                                tools:ignore="ContentDescription"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:id="@+id/imageSmartAlarmTools"
+                                app:layout_constraintTop_toTopOf="parent"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/_10sdp"
+                                android:textColor="@color/primary_text"
+                                android:text="Super\n Alarm"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/imageSmartAlarmTools"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:textSize="@dimen/_15ssp"
+                                android:gravity="end"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </soup.neumorphism.NeumorphCardView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <soup.neumorphism.NeumorphCardView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:id="@+id/stopWatchCardTools"
+                        app:neumorph_backgroundColor="#FFF"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/_5sdp"
+                        app:neumorph_shadowColorDark="@color/dark_shadow"
+                        app:neumorph_shadowColorLight="@color/light_shadow"
+                        app:neumorph_shadowElevation="@dimen/_3sdp"
+                        app:neumorph_shapeAppearance="@style/NeumorphismCard">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                android:src="@drawable/stop_watch"
+                                tools:ignore="ContentDescription"
+                                android:id="@+id/imageStopWatchTools"
+                                app:layout_constraintTop_toTopOf="parent"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/primary_text"
+                                android:text="Stop\nWatch"
+                                app:layout_constraintTop_toBottomOf="@+id/imageStopWatchTools"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:textSize="@dimen/_10ssp"
+                                android:gravity="center"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </soup.neumorphism.NeumorphCardView>
+                    <soup.neumorphism.NeumorphCardView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:id="@+id/moreAppsCardTools"
+                        app:neumorph_backgroundColor="#FFF"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/_5sdp"
+                        app:neumorph_shadowColorDark="@color/dark_shadow"
+                        app:neumorph_shadowColorLight="@color/light_shadow"
+                        app:neumorph_shadowElevation="@dimen/_3sdp"
+                        app:neumorph_shapeAppearance="@style/NeumorphismCard">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                android:src="@drawable/more_apps"
+                                tools:ignore="ContentDescription"
+                                android:id="@+id/imageMoreAppsTools"
+                                app:layout_constraintTop_toTopOf="parent"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/primary_text"
+                                android:text="More\nApps"
+                                app:layout_constraintTop_toBottomOf="@+id/imageMoreAppsTools"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:textSize="@dimen/_10ssp"
+                                android:gravity="center"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </soup.neumorphism.NeumorphCardView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </soup.neumorphism.NeumorphCardView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

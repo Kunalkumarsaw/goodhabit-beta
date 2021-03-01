@@ -3,24 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/background"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/fragmentContainerMain"
         android:layout_width="match_parent"
-        android:layout_above="@+id/navigationBottomMain"
-        android:layout_height="match_parent" />
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigationBottomMain"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigationBottomMainCard" />
+
+    <soup.neumorphism.NeumorphCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="@dimen/_10sdp"
-        android:background="?android:attr/windowBackground"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_navigation_main_menu" />
-
-
+        android:id="@+id/navigationBottomMainCard"
+        app:neumorph_backgroundColor="@color/background"
+        android:layout_alignParentEnd="true"
+        app:neumorph_shadowColorDark="@color/dark_shadow"
+        app:neumorph_shadowColorLight="@color/white"
+        android:layout_marginBottom="-15dp"
+        style="@style/NeumorphismCardNav"
+        app:neumorph_shadowElevation="@dimen/_4sdp"
+        android:layout_alignParentStart="true"
+        android:layout_height="wrap_content">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigationBottomMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/NeumorphismCardNav"
+            android:background="@color/background"
+            app:menu="@menu/bottom_navigation_main_menu" />
+    </soup.neumorphism.NeumorphCardView>
 
 
 </RelativeLayout>

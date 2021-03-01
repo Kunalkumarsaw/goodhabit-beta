@@ -28,4 +28,8 @@
         <item name="neumorph_cornerFamily">rounded</item>
         <item name="neumorph_cornerSize">@dimen/_10sdp</item>
     </style>
+    <style name="NeumorphismCardNav">
+        <item name="neumorph_cornerFamily">rounded</item>
+        <item name="neumorph_cornerSize">@dimen/_20sdp</item>
+    </style>
 </resources>
