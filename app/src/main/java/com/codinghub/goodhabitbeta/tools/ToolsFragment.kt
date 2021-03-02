@@ -28,6 +28,7 @@ class ToolsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ToolsViewModel::class.java)
         // TODO: Use the ViewModel
+        textClockTools.format24Hour= "h:mm a"
     }
 
 }

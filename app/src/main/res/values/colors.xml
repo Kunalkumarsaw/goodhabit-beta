@@ -10,7 +10,7 @@
 <!--    Custom colors-->
     <color name="primary">#2D7DF6</color>
     <color name="background">#E4E7FB</color>
-    <color name="primary_text">#0B0D0C</color>
+    <color name="primary_text">#333</color>
     <color name="secondary_text">#7D818A</color>
     <color name="dark_shadow">#CDD5EA</color>
     <color name="light_shadow">#F8F9FE</color>

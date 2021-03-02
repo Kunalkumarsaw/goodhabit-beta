@@ -29,7 +29,13 @@
         <item name="neumorph_cornerSize">@dimen/_10sdp</item>
     </style>
     <style name="NeumorphismCardNav">
-        <item name="neumorph_cornerFamily">rounded</item>
-        <item name="neumorph_cornerSize">@dimen/_20sdp</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/_10sdp</item>
+        <item name="cornerSizeTopRight">@dimen/_10sdp</item>
     </style>
+    <style name="NeumorphismCardTimeTracking">
+        <item name="neumorph_cornerFamily">rounded</item>
+        <item name="neumorph_cornerSize">@dimen/_60sdp</item>
+    </style>
+
 </resources>

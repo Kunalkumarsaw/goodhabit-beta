@@ -22,14 +22,14 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.bumptech.glide.Glide
 import com.codinghub.goodhabitbeta.MySingleton
+import com.codinghub.goodhabitbeta.R
 import com.codinghub.goodhabitbeta.databinding.UpdateFragmentBinding
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlinx.android.synthetic.main.update_fragment.*
+
 
 class updateFragment : Fragment() {
-
-    private var _binding:UpdateFragmentBinding? = null
-    private val binding get() = _binding!!
 
     private var gps_enabled=false
     private var network_enabled =false
@@ -44,12 +44,6 @@ class updateFragment : Fragment() {
 
 
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding=null
-
-    }
-
     companion object {
         fun newInstance() = updateFragment()
     }
@@ -61,22 +55,21 @@ class updateFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View {
-        _binding = UpdateFragmentBinding.inflate(inflater,container,false)
-        lm = context?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        provider = lm.getBestProvider(Criteria(),false)
-        gps_enabled= lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
-        network_enabled= lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-        binding.horoscopeButtonUpdate.setOnClickListener(View.OnClickListener { view->
-            var intent = Intent(context,HoroscopeActivity::class.java)
-            startActivity(intent)
-        })
-        return binding.root
+        return inflater.inflate(R.layout.update_fragment, container, false)
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(UpdateViewModel::class.java)
+        horoscopeButtonUpdate.setOnClickListener { view ->
+            val intent = Intent(context, HoroscopeActivity::class.java)
+            startActivity(intent)
+        }
+        lm = context?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        provider = lm.getBestProvider(Criteria(),false)
+        gps_enabled= lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        network_enabled= lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
 //        if (context?.let {
 //                ActivityCompat.checkSelfPermission(
 //                    it,
@@ -135,7 +128,7 @@ class updateFragment : Fragment() {
                 final_loc = net_loc
             }
         }
-        var location_lati =final_loc?.latitude
+        val location_lati =final_loc?.latitude
         val location_long =final_loc?.longitude
         val apiKey ="8ff49986433c4ed16b54da8b94d6775a"
         val url = "https://api.openweathermap.org/data/2.5/weather?lat=23.8608498&lon=86.4053626&appid=8ff49986433c4ed16b54da8b94d6775a"
@@ -145,33 +138,34 @@ class updateFragment : Fragment() {
             Request.Method.GET, url, null,
             { response ->
 //            textView.text = "Response: %s".format(response.toString())
-                Log.d("debug_fragment","response got successfully ")
+                Log.d("debug_fragment", "response got successfully ")
                 val weather = response.getJSONArray("weather").getJSONObject(0)
                 val main = response.getJSONObject("main")
                 val sys = response.getJSONObject("sys")
-                binding.apply {
 
-                    textViewHumidity.text =main.getString("humidity").plus("%")
-                    val presentTemp = main.getString("temp")
-                    textViewTemp.text = (presentTemp.toDouble().toInt() - 273).toString().plus("\u00B0")
-                    textViewSunrise.text= getDateString(sys.getString("sunrise").toLong())
-                    textViewSunset.text = getDateString(sys.getString("sunset").toLong())
-                    textViewWeatherLocation.text = response.getString("name")
-                    val weathericon = weather.getString("icon")
-                    Log.d("debug","Location is " + response.getString("name")+ "with lati=" + location_lati +" and log = " + location_long)
-//                    Log.e("Tag","Formatted Date"+getDateString(sys.getString("sunrise").toLong()))
-                    val image_url = "https://openweathermap.org/img/wn/$weathericon@2x.png"
-                    Glide.with(requireContext()).load(image_url).into(imageViewWeather)
-                    if (weathericon.last() == 'n'){
-                        textViewWeatherDescription.text =weather.getString("main").plus(" night")
-                    }else{
-                        textViewWeatherDescription.text =weather.getString("main").plus( " day")
-                    }
+                textViewHumidity.text = main.getString("humidity").plus("%")
+                val presentTemp = main.getString("temp")
+                textViewTemp.text = (presentTemp.toDouble().toInt() - 273).toString().plus("\u00B0")
+                textViewSunrise.text = getDateString(sys.getString("sunrise").toLong())
+                textViewSunset.text = getDateString(sys.getString("sunset").toLong())
+                textViewWeatherLocation.text = response.getString("name")
+                val weathericon = weather.getString("icon")
+                Log.d(
+                    "debug",
+                    "Location is " + response.getString("name") + "with lati=" + location_lati + " and log = " + location_long
+                )
+                //                    Log.e("Tag","Formatted Date"+getDateString(sys.getString("sunrise").toLong()))
+                val image_url = "https://openweathermap.org/img/wn/$weathericon@2x.png"
+                Glide.with(requireContext()).load(image_url).into(imageViewWeather)
+                if (weathericon.last() == 'n') {
+                    textViewWeatherDescription.text = weather.getString("main").plus(" night")
+                } else {
+                    textViewWeatherDescription.text = weather.getString("main").plus(" day")
                 }
 
             },
             { error ->
-                Log.d("debug_fragment","response got unsuccessfully " + error.message)
+                Log.d("debug_fragment", "response got unsuccessfully " + error.message)
 // TODO: Handle error
             }
         )

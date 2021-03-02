@@ -19,6 +19,7 @@
         android:theme="@style/Theme.NeumorphismDashboard"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".tracking.TimeTracking"></activity>
         <activity android:name=".SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,11 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".update.HoroscopeActivity"/>
+        <activity android:name=".update.HoroscopeActivity" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/FullScreen">
-        </activity>
+            android:theme="@style/FullScreen"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
