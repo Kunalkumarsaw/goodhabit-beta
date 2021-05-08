@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemDaysButton"
+    android:layout_width="@dimen/_25sdp"
+    android:layout_height="@dimen/_25sdp"
+    tools:text="M"
+    android:layout_marginStart="@dimen/_6sdp"
+    android:layout_marginEnd="@dimen/_6sdp"
+    android:textStyle="bold"
+    style="@style/RoundedButton"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:textSize="@dimen/_16ssp"
+    android:textColor="@color/purpleTheme"
+    android:background="@drawable/strokedroundbutton" />

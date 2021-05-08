@@ -1,6 +1,5 @@
 package com.codinghub.goodhabitbeta.update
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -40,7 +39,7 @@ class updateFragment : Fragment() {
     private var MY_PERMISSIONS_REQUEST_LOCATION =101
     private var provider : String ? = null
 
-    val sdf = SimpleDateFormat("h:mm a",Locale.getDefault())
+    private val sdf = SimpleDateFormat("h:mm a",Locale.getDefault())
 
 
 
@@ -62,7 +61,7 @@ class updateFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(UpdateViewModel::class.java)
-        horoscopeButtonUpdate.setOnClickListener { view ->
+        horoscopeButtonUpdate.setOnClickListener {
             val intent = Intent(context, HoroscopeActivity::class.java)
             startActivity(intent)
         }
@@ -179,6 +178,6 @@ class updateFragment : Fragment() {
 }
 
 
-private fun LocationManager.requestLocationUpdates(it: String, i: Int, i1: Int, context: Context) {
+private fun LocationManager.requestLocationUpdates(it: String, i1: Int, context: Context) {
 
 }

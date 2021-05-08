@@ -7,9 +7,17 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" /> <!-- fitness permissions -->
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
-    <uses-permission android:name="android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.gms.permission.ACTIVITY_RECOGNITION" /> <!-- activity tracking permission -->
+    <!-- foreground services permissions for alarm service -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<!--    Vibration-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
+        android:name=".AlarmApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +27,9 @@
         android:theme="@style/Theme.NeumorphismDashboard"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".tracking.TimeTracking"></activity>
+        <activity android:name=".tools.alarm.AlarmDismiss"></activity>
+        <activity android:name=".tools.alarm.AlarmHome" />
+        <activity android:name=".tools.TimeTracking" />
         <activity android:name=".SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +40,18 @@
         <activity android:name=".update.HoroscopeActivity" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/FullScreen"></activity>
+            android:theme="@style/FullScreen" />
+
+        <receiver
+            android:name=".receiver.AlarmReceiver"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name=".receiver.SnoozeReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <service android:name=".receiver.AlarmService" />
 
         <meta-data
             android:name="preloaded_fonts"

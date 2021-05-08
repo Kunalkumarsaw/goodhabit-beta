@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:id="@+id/waterReminderScrollLayoutTools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_10sdp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <soup.neumorphism.NeumorphImageButton
+                    android:id="@+id/cross_button_water_reminder"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:padding="@dimen/_19sdp"
+                    android:src="@drawable/cross_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_shadowElevation="@dimen/_2sdp"
+                    app:neumorph_strokeColor="@color/stokeColor"
+                    app:neumorph_strokeWidth="@dimen/_1sdp" />
+                <soup.neumorphism.NeumorphImageButton
+                    android:id="@+id/eye_button_water_reminder"
+                    android:layout_width="@dimen/_55sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/_12sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/bulb_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    app:neumorph_shadowElevation="@dimen/_2sdp"
+                    app:neumorph_strokeColor="@color/stokeColor"
+                    app:neumorph_strokeWidth="@dimen/_1sdp" />
+
+                <soup.neumorphism.NeumorphCardView
+                    android:layout_width="@dimen/_140sdp"
+                    android:layout_height="@dimen/_140sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:neumorph_shadowElevation="@dimen/_3sdp"
+                    app:neumorph_strokeColor="@color/stokeColor"
+                    app:neumorph_strokeWidth="@dimen/_1sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cross_button_water_reminder"
+                    app:neumorph_shapeAppearance="@style/NeumorphismCardTimeTracking">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/progress_waterReminder_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="@dimen/_25ssp"
+                            android:text="1570 / 2670 ml"
+                            android:textColor="@color/secondary_text"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/glass"
+                            android:scaleType="fitCenter"
+                            android:padding="@dimen/_2sdp"
+                            app:layout_constraintBottom_toBottomOf="@+id/button"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="ContentDescription" />
+
+                        <Button
+                            android:id="@+id/button"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ellipse_water_reminder"
+                            android:text="Add cup"
+                            android:textAllCaps="false"
+                            android:textColor="@color/purpleTheme"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </soup.neumorphism.NeumorphCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/_70sdp"
+                android:layout_marginEnd="@dimen/_70sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/cup_100_ml"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
+                        tools:ignore="ContentDescription" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="100 ml"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_9ssp"
+                        android:textColor="@color/secondary_text"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/cup_200_ml"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/_2sdp"
+                        tools:ignore="ContentDescription" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="200 ml"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_9ssp"
+                        android:textColor="@color/secondary_text"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/cup_300_ml"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/_2sdp"
+                        tools:ignore="ContentDescription" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="300 ml"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_9ssp"
+                        android:textColor="@color/secondary_text"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/jar_500_ml"
+                        android:scaleType="centerCrop"
+                        tools:ignore="ContentDescription" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="500 ml"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_9ssp"
+                        android:textColor="@color/secondary_text"/>
+                </LinearLayout>
+            </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:orientation="horizontal">
+                <soup.neumorphism.NeumorphButton
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="match_parent"
+                    app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    app:neumorph_strokeColor="@color/stokeColor"
+                    app:neumorph_strokeWidth="@dimen/_1sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    app:neumorph_shadowElevation="@dimen/_2sdp"
+                    android:id="@+id/setDefaultButton"
+                    android:text="Set default"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/purpleTheme"
+                    android:textSize="@dimen/_10ssp"/>
+                <soup.neumorphism.NeumorphButton
+                    android:layout_width="@dimen/_100sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_height="match_parent"
+                    app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    app:neumorph_strokeColor="@color/stokeColor"
+                    app:neumorph_strokeWidth="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:neumorph_shadowElevation="@dimen/_2sdp"
+                    android:id="@+id/reminderButton"
+                    android:text="Reminder"
+                    android:textColor="@color/purpleTheme"
+                    android:gravity="center"
+                    android:layout_gravity="end"
+                    android:textSize="@dimen/_10ssp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Water Reminder"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:textSize="@dimen/_17ssp"
+                    android:textColor="@color/primary_text"/>
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:layout_width="match_parent"
+                    android:textColor="@color/purpleTheme"
+                    android:gravity="end|center_vertical"
+                    android:layout_gravity="end"
+                    android:text="Activate"
+                    android:backgroundTint="@color/purpleTheme"
+                    app:switchPadding="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+            <soup.neumorphism.NeumorphCardView
+                app:neumorph_strokeWidth="@dimen/_1sdp"
+                app:neumorph_strokeColor="@color/stokeColor"
+                android:id="@+id/waterReminderNextRmUpdateCardTools"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_margin="@dimen/_5sdp"
+                app:neumorph_shadowColorDark="@color/dark_shadow"
+                app:neumorph_shadowColorLight="@color/light_shadow"
+                app:neumorph_shadowElevation="@dimen/_2sdp"
+                app:neumorph_shapeAppearance="@style/NeumorphismCard">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_60sdp"
+                        android:padding="@dimen/_2sdp"
+                        android:scaleType="fitXY"
+                        android:layout_marginStart="-2dp"
+                        android:layout_marginEnd="-5dp"
+                        android:src="@drawable/water_reminder_box"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/silenceReminder_waterReminder_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_25sdp"
+                        android:gravity="center"
+                        android:background="@color/purpleTheme"
+                        android:text="Silence reminder"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/textView_upcomingReminder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:text="Upcoming reminder"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/_9ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/nextReminderRepeat_waterReminder_textView"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_9ssp"
+                        android:layout_height="wrap_content"
+                        tools:text="Every 1 hour"
+                        android:textColor="@color/secondary_text"
+                        android:layout_margin="@dimen/_8sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/nextReminderTime_waterReminder_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="@dimen/_19ssp"
+                        android:textColor="@color/primary_text"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView_upcomingReminder"
+                        tools:text="10:10 Am" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </soup.neumorphism.NeumorphCardView>
+            <TextView
+                android:id="@+id/skipedGoals_waterReminder_textView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25sdp"
+                android:gravity="center"
+                android:text="Skipped goals"
+                android:textColor="@color/purpleTheme"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25sdp"
+                android:gravity="start|center_vertical"
+                android:text="History"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_17sdp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

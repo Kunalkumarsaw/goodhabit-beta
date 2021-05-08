@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background">
+
+    <soup.neumorphism.NeumorphCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:neumorph_shadowElevation="@dimen/_2sdp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCard"
+        app:neumorph_strokeColor="@color/stokeColor"
+        app:neumorph_strokeWidth="@dimen/_1sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/radioButtonUpcoming"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@color/background"
+                android:buttonTint="@color/purpleTheme"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/timeUpcoming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_17ssp"
+                android:textColor="@color/primary_text"
+                android:layout_marginBottom="@dimen/_9sdp"
+                app:layout_constraintStart_toEndOf="@+id/radioButtonUpcoming"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="18:30" />
+
+            <TextView
+                android:id="@+id/recurringUpcoming"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/_10ssp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:textColor="@color/secondary_text"
+                app:layout_constraintStart_toEndOf="@+id/radioButtonUpcoming"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Mon, tue, Wed" />
+
+            <TextView
+                android:id="@+id/labelUpcoming"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:maxWidth="@dimen/_120sdp"
+                android:maxLines="1"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_13ssp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintEnd_toStartOf="@+id/menuUpcoming"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Meet Kunal !" />
+            <Spinner
+                android:id="@+id/spinnerUpcoming"
+                android:layout_width="@dimen/_5sdp"
+                android:layout_height="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:spinnerMode="dropdown" />
+            <ImageButton
+                android:id="@+id/menuUpcoming"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="match_parent"
+                android:src="@drawable/update_nav"
+                tools:ignore="contentDescription"
+                android:background="@color/purpleTheme"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </soup.neumorphism.NeumorphCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

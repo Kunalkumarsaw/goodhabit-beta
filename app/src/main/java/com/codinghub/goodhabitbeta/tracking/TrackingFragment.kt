@@ -160,7 +160,7 @@ class TrackingFragment : Fragment() {
     private fun accessGoogleFit() {
         val c = Calendar.getInstance()
         val endTime = c.time.time
-        c.add(Calendar.DAY_OF_YEAR,-2)
+        c.add(Calendar.DAY_OF_YEAR, -2)
         val startTime = c.time.time
 //        val endTime = LocalDateTime.now().atZone(ZoneId.systemDefault())
 //        val startTime = endTime.minusWeeks(1)
@@ -170,7 +170,7 @@ class TrackingFragment : Fragment() {
 
         val readRequest = DataReadRequest.Builder()
             .aggregate(DataType.AGGREGATE_STEP_COUNT_DELTA)
-            .bucketByTime(1,TimeUnit.DAYS)
+            .bucketByTime(1, TimeUnit.DAYS)
             .setTimeRange(startTime, endTime, TimeUnit.MILLISECONDS)
             .build()
         Fitness.getHistoryClient(requireContext(), getGoogleAccount())
@@ -198,7 +198,7 @@ class TrackingFragment : Fragment() {
                 Log.i(TAG, "\tField: ${field.name.toString()} Value: ${dp.getValue(field)}")
                 if (field == Field.FIELD_STEPS) {
                     totalSteps = dp.getValue(field).toString()
-                    steps.text =totalSteps
+                    steps.text = totalSteps
                 }
 
             }

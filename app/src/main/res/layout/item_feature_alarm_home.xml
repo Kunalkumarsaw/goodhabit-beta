@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_50sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingStart="@dimen/_20sdp"
+    android:layout_margin="@dimen/_3sdp"
+    android:paddingEnd="@dimen/_10sdp">
+
+    <TextView
+        android:id="@+id/titleItemFeatureAlarmHome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Mission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/_15ssp" />
+
+    <TextView
+        android:id="@+id/typeItemFeatureAlarmHome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleItemFeatureAlarmHome"
+        tools:text="off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top|start"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_13sdp" />
+
+    <soup.neumorphism.NeumorphImageButton
+        android:id="@+id/itemFeatureButtonAlarmHome"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:neumorph_shadowElevation="@dimen/_1sdp"
+
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:padding="@dimen/_17sdp"
+        android:src="@drawable/arrow_forward_ios" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

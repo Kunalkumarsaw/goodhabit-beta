@@ -6,7 +6,7 @@
     android:padding="@dimen/_10sdp"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".tracking.TimeTracking">
+    tools:context=".tools.TimeTracking">
     <LinearLayout
         android:layout_width="match_parent"
         android:id="@+id/linerLayoutTimeTrackingHeader"
@@ -15,19 +15,19 @@
         android:orientation="horizontal">
         <soup.neumorphism.NeumorphImageButton
             android:layout_width="@dimen/_50sdp"
+            android:id="@+id/back_button_timeTracking"
             android:src="@drawable/back_ios"
             android:padding="@dimen/_19sdp"
             android:layout_height="@dimen/_50sdp"
-            app:neumorph_shadowElevation="@dimen/_2sdp"/>
+            app:neumorph_shadowElevation="@dimen/_1sdp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Time Tracking"
+            android:text="@string/time_tracking"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_18sdp"
             android:gravity="center"
-            android:layout_marginEnd="@dimen/_50sdp"
-            android:textStyle="bold"/>
+            android:layout_marginEnd="@dimen/_50sdp"/>
     </LinearLayout>
     <soup.neumorphism.NeumorphImageButton
         android:layout_width="@dimen/_120sdp"
@@ -37,8 +37,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="@dimen/_20sdp"
+        android:id="@+id/timeTrackingEyeButton"
         app:neumorph_shapeAppearance="@style/NeumorphismCardTimeTracking"
         app:neumorph_shadowElevation="@dimen/_3sdp"/>
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart"
+        app:layout_constraintTop_toBottomOf="@+id/timeTrackingEyeButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

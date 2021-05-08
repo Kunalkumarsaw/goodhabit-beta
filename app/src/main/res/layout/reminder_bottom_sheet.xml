@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/rectangle_background"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/background"
+    android:padding="@dimen/_10sdp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_reminder_goal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:text="Goal"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/goalTextViewWaterReminder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="end|center_vertical"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_11ssp"
+            tools:text="5500 ml" />
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/goalDefaultReminderSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:max="5000"
+        android:progress="3000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_reminder_goal" />
+
+    <soup.neumorphism.NeumorphCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goalDefaultReminderSeekBar"
+        app:neumorph_shadowElevation="@dimen/_3sdp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCard">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:text="Default Reminder"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15ssp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/defaultReminderStartTextViewStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="start|center_vertical"
+                    android:text="Start"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/defaultReminderStartTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:gravity="start|center_vertical"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toEndOf="@+id/defaultReminderStartTextViewStart"
+                    tools:text="07:00 AM" />
+
+                <TextView
+                    android:id="@+id/defaultReminderEndTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:gravity="start|center_vertical"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintEnd_toStartOf="@+id/defaultReminderStartTextViewEnd"
+                    tools:text="09:00 PM" />
+
+                <TextView
+                    android:id="@+id/defaultReminderStartTextViewEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:gravity="end|center_vertical"
+                    android:text="End"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.jem.rubberpicker.RubberRangePicker
+                android:id="@+id/durationDefaultReminderSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:minValue="0"
+                app:maxValue="24"
+                app:initialStartValue="5"
+                app:initialEndValue="20"
+                app:elasticBehavior="cubic"
+                app:dampingRatio="0.4"
+                app:stiffness="300"
+                app:stretchRange="16dp"
+                app:defaultThumbRadius="7dp"
+                app:normalTrackWidth="2dp"
+                app:highlightTrackWidth="4dp"
+                app:normalTrackColor="@color/secondary_text"
+                app:highlightTrackColor="@color/purpleTheme"
+                app:defaultThumbInsideColor="@color/purpleTheme"
+                app:highlightDefaultThumbOnTouchColor="#CD5D67"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="start|center_vertical"
+                    android:text="Reminder"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/_13ssp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/gapDefaultTextViewWaterReminder"
+                    android:gravity="end|center_vertical"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/_11ssp"
+                    tools:text="Every 1 hour" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/gapDefaultReminderSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="6" />
+        </LinearLayout>
+
+    </soup.neumorphism.NeumorphCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

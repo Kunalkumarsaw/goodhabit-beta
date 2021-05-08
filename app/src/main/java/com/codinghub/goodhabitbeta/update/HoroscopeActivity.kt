@@ -21,9 +21,9 @@ import java.util.*
 
 class HoroscopeActivity : AppCompatActivity() {
     lateinit var gridView: GridView
-    lateinit var presentCardView: NeumorphCardView
-    var isSecondTime =false
-    lateinit var ctx :Context
+    private lateinit var presentCardView: NeumorphCardView
+    private var isSecondTime =false
+    private lateinit var ctx :Context
     private var horoscopeNames = arrayOf(
         "Aquarius",
         "Aries",
@@ -65,7 +65,7 @@ class HoroscopeActivity : AppCompatActivity() {
         binding.gridViewHoroscope.adapter = horoscopeAdapter
         binding.gridViewHoroscope.choiceMode= GridView.CHOICE_MODE_SINGLE
         binding.gridViewHoroscope.setItemChecked(1,true)
-    val gridView = findViewById<GridView>(R.id.gridViewHoroscope)
+        val gridView = findViewById<GridView>(R.id.gridViewHoroscope)
         gridView.setSelection(0)
         gridView.setItemChecked(0,true)
         binding.gridViewHoroscope.setItemChecked(1,true)

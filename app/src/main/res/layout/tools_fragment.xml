@@ -1,255 +1,421 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".tools.ToolsFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="toolsViewModel"
+            type="com.codinghub.goodhabitbeta.tools.ToolsViewModel" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="-20dp"
+        android:background="@color/background"
+        tools:context=".tools.ToolsFragment">
 
-        <LinearLayout
-            android:id="@+id/textClockCardViewTools"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_110sdp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-            <TextClock
-                android:id="@+id/textClockTools"
+            <LinearLayout
+                android:id="@+id/textClockCardViewTools"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:format24Hour="h:mm a"
-                android:textAllCaps="true"
-                android:gravity="center"
-                android:textColor="@color/primary_text"
-                android:textSize="@dimen/_40ssp"
-                android:textStyle="bold"/>
+                android:layout_height="@dimen/_120sdp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/dateClockTools"
+                <soup.neumorphism.NeumorphImageButton
+                    android:id="@+id/expand_button_ClockTools"
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_gravity="end"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/expand_clock"
+                    app:neumorph_shadowElevation="@dimen/_2sdp" />
+
+                <TextClock
+                    android:id="@+id/textClockTools"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:format24Hour="h:mm a"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/_40ssp"
+                    android:textStyle="bold"
+                    tools:text="9:38 Pm" />
+
+                <TextView
+                    android:id="@+id/dateClockTools"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/hello_kunal"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/_15ssp" />
+            </LinearLayout>
+
+            <soup.neumorphism.NeumorphCardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/hello_kunal"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/primary_text"
-                android:textSize="@dimen/_15ssp" />
-        </LinearLayout>
+                android:layout_height="@dimen/_450sdp"
+                android:layout_marginStart="-15dp"
+                android:layout_marginEnd="-15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textClockCardViewTools"
+                app:neumorph_backgroundColor="@color/background"
+                app:neumorph_shadowColorDark="@color/dark_shadow"
+                app:neumorph_shadowColorLight="#7090909F"
+                app:neumorph_shadowElevation="@dimen/_4sdp"
+                app:neumorph_shapeType="pressed">
 
-        <soup.neumorphism.NeumorphCardView
-            android:layout_width="match_parent"
-            android:layout_height="681dp"
-            android:layout_marginStart="-15dp"
-            android:layout_marginEnd="-15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textClockCardViewTools"
-            app:neumorph_backgroundColor="@color/background"
-            app:neumorph_shadowColorDark="@color/dark_shadow"
-            app:neumorph_shadowColorLight="#7090909F"
-            app:neumorph_shadowElevation="@dimen/_4sdp"
-            app:neumorph_shapeType="pressed">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/tools_pressed_card"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/_10sdp">
-
-                <soup.neumorphism.NeumorphCardView
-                    app:neumorph_strokeWidth="@dimen/_1sdp"
-                    app:neumorph_strokeColor="#E1DEDE"
-                    android:id="@+id/smartAlarmCardTools"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_weight="1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tools_pressed_card"
-                    app:neumorph_backgroundColor="@color/background"
-                    app:neumorph_shadowColorDark="@color/dark_shadow"
-                    app:neumorph_shadowColorLight="@color/light_shadow"
-                    app:neumorph_shadowElevation="@dimen/_3sdp"
-                    app:neumorph_shapeAppearance="@style/NeumorphismCard">
-
-                    <ImageView
+                <ScrollView
+                    android:id="@+id/tools_pressed_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/super_alarm_icon_tools"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ContentDescription" />
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp">
 
-                    <TextView
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="match_parent"
-                        android:fontFamily="sans-serif-medium"
-                        android:gravity="center"
-                        android:padding="@dimen/_10sdp"
-                        android:text="Super\n Alarm"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_16ssp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageSmartAlarmTools"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </soup.neumorphism.NeumorphCardView>
+                        <soup.neumorphism.NeumorphCardView
+                            android:id="@+id/smartAlarmCardTools"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_90sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_weight="1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:neumorph_backgroundColor="@color/background"
+                            app:neumorph_shadowColorDark="@color/dark_shadow"
+                            app:neumorph_shadowColorLight="@color/light_shadow"
+                            app:neumorph_shadowElevation="@dimen/_3sdp"
+                            app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                            app:neumorph_strokeColor="#E1DEDE"
+                            app:neumorph_strokeWidth="@dimen/_1sdp">
 
-                <soup.neumorphism.NeumorphCardView
-                    android:id="@+id/timeTrackingCardTools"
-                    app:neumorph_shapeAppearance="@style/NeumorphismCard"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_55sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    app:layout_constraintEnd_toStartOf="@+id/waterReminderCardTools"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/smartAlarmCardTools"
-                    app:neumorph_backgroundColor="@color/background"
-                    app:neumorph_shadowColorDark="@color/dark_shadow"
-                    app:neumorph_shadowColorLight="@color/light_shadow"
-                    app:neumorph_shadowElevation="@dimen/_3sdp"
-                    app:neumorph_strokeWidth="@dimen/_1sdp"
-                    app:neumorph_strokeColor="#E1DEDE">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/super_alarm_icon_tools"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="ContentDescription" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:fontFamily="sans-serif-medium"
-                        android:gravity="center"
-                        android:lines="1"
-                        android:text="Time Tracking"
-                        android:textColor="@color/primary_text"
-                        android:textSize="@dimen/_11ssp" />
+                            <TextView
+                                android:layout_width="@dimen/_100sdp"
+                                android:layout_height="match_parent"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="center"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Super\n Alarm"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_16ssp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/imageSmartAlarmTools"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </soup.neumorphism.NeumorphCardView>
 
-                    <ImageView
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical|end"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:scaleType="center"
-                        android:paddingBottom="@dimen/_5sdp"
-                        android:src="@drawable/imetracking_icon_tools"
-                        tools:ignore="ContentDescription" />
-                </soup.neumorphism.NeumorphCardView>
+                        <soup.neumorphism.NeumorphCardView
+                            android:id="@+id/timeTrackingCardTools"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            app:layout_constraintEnd_toStartOf="@+id/waterReminderCardTools"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/smartAlarmCardTools"
+                            app:neumorph_backgroundColor="@color/background"
+                            app:neumorph_shadowColorDark="@color/dark_shadow"
+                            app:neumorph_shadowColorLight="@color/light_shadow"
+                            app:neumorph_shadowElevation="@dimen/_3sdp"
+                            app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                            app:neumorph_strokeColor="#E1DEDE"
+                            app:neumorph_strokeWidth="@dimen/_1sdp">
 
-                <soup.neumorphism.NeumorphCardView
-                    app:neumorph_strokeWidth="@dimen/_1sdp"
-                    app:neumorph_strokeColor="#E1DEDE"
-                    android:id="@+id/stopWatchCardTools"
-                    app:neumorph_shapeAppearance="@style/NeumorphismCard"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_55sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    app:layout_constraintEnd_toStartOf="@+id/waterReminderCardTools"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/timeTrackingCardTools"
-                    app:neumorph_backgroundColor="@color/background"
-                    app:neumorph_shadowColorDark="@color/dark_shadow"
-                    app:neumorph_shadowColorLight="@color/light_shadow"
-                    app:neumorph_shadowElevation="@dimen/_3sdp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:text="Time Tracking"
+                                android:textColor="@color/primary_text"
+                                android:textSize="@dimen/_11ssp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:fontFamily="sans-serif-medium"
-                        android:gravity="center_vertical|start"
-                        android:lines="1"
-                        android:text="Stop Watch"
-                        android:textColor="@color/primary_text"
-                        android:textSize="@dimen/_11ssp" />
+                            <ImageView
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical|end"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:scaleType="center"
+                                android:src="@drawable/imetracking_icon_tools"
+                                tools:ignore="ContentDescription" />
+                        </soup.neumorphism.NeumorphCardView>
 
-                    <ImageView
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical|end"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:scaleType="center"
-                        android:src="@drawable/stopwatch_icon_tools"
-                        tools:ignore="ContentDescription" />
-                </soup.neumorphism.NeumorphCardView>
+                        <soup.neumorphism.NeumorphCardView
+                            android:id="@+id/stopWatchCardTools"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            app:layout_constraintEnd_toStartOf="@+id/waterReminderCardTools"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/timeTrackingCardTools"
+                            app:neumorph_backgroundColor="@color/background"
+                            app:neumorph_shadowColorDark="@color/dark_shadow"
+                            app:neumorph_shadowColorLight="@color/light_shadow"
+                            app:neumorph_shadowElevation="@dimen/_3sdp"
+                            app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                            app:neumorph_strokeColor="@color/stokeColor"
+                            app:neumorph_strokeWidth="@dimen/_1sdp">
 
-                <soup.neumorphism.NeumorphCardView
-                    app:neumorph_strokeWidth="@dimen/_1sdp"
-                    app:neumorph_strokeColor="#E1DEDE"
-                    android:id="@+id/waterReminderCardTools"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/smartAlarmCardTools"
-                    app:neumorph_backgroundColor="@color/background"
-                    app:neumorph_shadowColorDark="@color/dark_shadow"
-                    app:neumorph_shadowColorLight="@color/light_shadow"
-                    app:neumorph_shadowElevation="@dimen/_3sdp"
-                    app:neumorph_shapeAppearance="@style/NeumorphismCard">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="center_vertical|start"
+                                android:lines="1"
+                                android:text="@string/stop_watch"
+                                android:textColor="@color/primary_text"
+                                android:textSize="@dimen/_11ssp" />
 
-                    <ImageView
+                            <ImageView
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical|end"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:scaleType="center"
+                                android:src="@drawable/stopwatch_icon_tools"
+                                tools:ignore="ContentDescription" />
+                        </soup.neumorphism.NeumorphCardView>
+
+                        <soup.neumorphism.NeumorphCardView
+                            android:id="@+id/waterReminderCardTools"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/smartAlarmCardTools"
+                            app:neumorph_backgroundColor="@color/background"
+                            app:neumorph_shadowColorDark="@color/dark_shadow"
+                            app:neumorph_shadowColorLight="@color/light_shadow"
+                            app:neumorph_shadowElevation="@dimen/_3sdp"
+                            app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                            app:neumorph_strokeColor="#E1DEDE"
+                            app:neumorph_strokeWidth="@dimen/_1sdp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="start"
+                                android:layout_marginStart="-10dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/water_reminder_icon_tools"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:layout_width="@dimen/_100sdp"
+                                android:layout_height="match_parent"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="start"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Water\nReminder"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/primary_text"
+                                android:textSize="@dimen/_12ssp" />
+                        </soup.neumorphism.NeumorphCardView>
+
+                        <LinearLayout
+                            android:id="@+id/upcomingAlarmsDivider"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_27sdp"
+                            android:paddingEnd="@dimen/_7sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/stopWatchCardTools">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="center_vertical|start"
+                                android:lines="1"
+                                android:text="@string/upcoming_alarms"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/_9ssp" />
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/_7sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:background="@drawable/dash_line"
+                                android:scaleType="center"
+                                tools:ignore="ContentDescription" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerUpcomingAlarms"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_100sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/upcomingAlarmsDivider" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </ScrollView>
+
+
+
+                <ScrollView
+                    android:id="@+id/stopWatchLayoutTools"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/water_reminder_icon_tools"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ContentDescription" />
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp">
 
-                    <TextView
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="match_parent"
-                        android:fontFamily="sans-serif-medium"
-                        android:gravity="start"
-                        android:padding="@dimen/_10sdp"
-                        android:text="Water\nReminder"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/primary_text"
-                        android:textSize="@dimen/_12ssp"/>
-                </soup.neumorphism.NeumorphCardView>
+                        <soup.neumorphism.NeumorphImageButton
+                            android:id="@+id/cross_button_stopwatch"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:padding="@dimen/_19sdp"
+                            android:src="@drawable/cross_icon"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:neumorph_shadowElevation="@dimen/_2sdp"
+                            app:neumorph_strokeColor="@color/stokeColor"
+                            app:neumorph_strokeWidth="@dimen/_1sdp" />
+
+                        <Chronometer
+                            android:id="@+id/chronometer_stopwatch"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_100sdp"
+                            android:format="00:%s"
+                            android:gravity="center"
+                            android:textSize="@dimen/_30ssp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cross_button_stopwatch" />
+
+                        <ListView
+                            android:id="@+id/listViewLapsedStopwatch"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_150sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/chronometer_stopwatch" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </ScrollView>
+
+                <include
+                    android:id="@+id/waterReminderIncludeLayoutTools"
+                    layout="@layout/water_reminder_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_35sdp"
+                    android:visibility="gone" />
+
+            </soup.neumorphism.NeumorphCardView>
+
+            <soup.neumorphism.NeumorphCardView
+                android:id="@+id/resetPlayLapseCard"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="-7dp"
+                android:layout_marginEnd="-7dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                app:neumorph_strokeColor="@color/stokeColor"
+                app:neumorph_strokeWidth="@dimen/_2sdp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    app:layout_constraintTop_toBottomOf="@+id/stopWatchCardTools"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:paddingStart="@dimen/_30sdp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
+
+                    <soup.neumorphism.NeumorphButton
+                        android:id="@+id/resetStopWatchButton"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:fontFamily="sans-serif-medium"
-                        android:gravity="center_vertical|start"
-                        android:lines="1"
-                        android:text="Upcomings alarms"
-                        android:textColor="@color/secondary_text"
-                        android:textSize="@dimen/_9ssp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_marginStart="@dimen/_7sdp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical|end"
                         android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Reset"
+                        android:textSize="@dimen/_12ssp"
+                        app:neumorph_shadowElevation="@dimen/_2sdp"
+                        app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                        app:neumorph_strokeColor="@color/stokeColor"
+                        app:neumorph_strokeWidth="@dimen/_1sdp" />
+
+                    <soup.neumorphism.NeumorphImageButton
+                        android:id="@+id/play_button_stopwatch"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_gravity="center"
                         android:scaleType="center"
-                        android:src="@drawable/upcoming_alarms_path"
-                        tools:ignore="ContentDescription" />
+                        android:src="@drawable/play_arrow"
+                        app:neumorph_backgroundColor="#6424AC"
+                        app:neumorph_shadowElevation="@dimen/_2sdp"
+                        app:neumorph_strokeColor="@color/stokeColor"
+                        app:neumorph_strokeWidth="@dimen/_1sdp" />
+
+                    <soup.neumorphism.NeumorphButton
+                        android:id="@+id/lapseStopWatchButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Lapse"
+                        android:textSize="@dimen/_12ssp"
+                        app:neumorph_shadowElevation="@dimen/_2sdp"
+                        app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                        app:neumorph_strokeColor="@color/stokeColor"
+                        app:neumorph_strokeWidth="@dimen/_1sdp" />
                 </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </soup.neumorphism.NeumorphCardView>
 
-        </soup.neumorphism.NeumorphCardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+    </FrameLayout>
+</layout>

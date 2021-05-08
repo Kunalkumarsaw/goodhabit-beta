@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".tools.alarm.AlarmHome">
+
+    <TextView
+        android:id="@+id/titleAlarmHome"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_gravity="center"
+        android:background="@color/background"
+        android:gravity="center"
+        android:text="@string/super_alarm"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/_18sdp"
+        app:layout_constraintEnd_toStartOf="@+id/previewButtonAlarmHome"
+        app:layout_constraintStart_toEndOf="@+id/backButtonAlarmHome"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <soup.neumorphism.NeumorphImageButton
+        android:id="@+id/backButtonAlarmHome"
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:padding="@dimen/_17sdp"
+        android:src="@drawable/back_ios"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:neumorph_shadowElevation="@dimen/_2sdp" />
+
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/previewButtonAlarmHome"
+        android:layout_width="@dimen/_75sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:gravity="center"
+        android:text="@string/preview"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:textColor="@color/primary_text"
+        app:neumorph_strokeWidth="@dimen/_1sdp"
+        app:neumorph_strokeColor="@color/stokeColor"
+        app:layout_constraintEnd_toStartOf="@+id/deleteButtonAlarmHome"
+        app:layout_constraintTop_toTopOf="parent"
+        app:neumorph_shadowElevation="@dimen/_1sdp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCard" />
+
+    <soup.neumorphism.NeumorphImageButton
+        android:id="@+id/deleteButtonAlarmHome"
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:padding="@dimen/_12sdp"
+        android:src="@drawable/deletebutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:neumorph_shadowElevation="@dimen/_2sdp" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_70sdp">
+
+            <TimePicker
+                android:id="@+id/timePickerAlarmHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numbersSelectorColor="@color/black"
+                android:numbersTextColor="@color/primary_text"
+                android:timePickerMode="spinner" />
+
+
+            <LinearLayout
+                android:id="@+id/linerLayoutAlarmHomeHeader"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25sdp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/daySundayAlarmHome"
+                    layout="@layout/item_days_alarm_home" />
+
+                <include
+                    android:id="@+id/dayMondayAlarmHome"
+                    layout="@layout/item_days_alarm_home" />
+
+                <include
+                    android:id="@+id/dayTuesdayAlarmHome"
+                    layout="@layout/item_days_alarm_home" />
+
+                <include
+                    android:id="@+id/dayWednesdayAlarmHome"
+                    layout="@layout/item_days_alarm_home" />
+
+                <include
+                    android:id="@+id/dayThursdayAlarmHome"
+                    layout="@layout/item_days_alarm_home" />
+
+                <include
+                    android:id="@+id/dayFridayAlarmHome"
+                    layout="@layout/item_days_alarm_home" />
+
+                <include
+                    android:id="@+id/daySaturdayAlarmHome"
+                    layout="@layout/item_days_alarm_home" />
+
+            </LinearLayout>
+
+            <include
+                android:id="@+id/includeMissionAlarmHome"
+                layout="@layout/item_feature_alarm_home" />
+
+            <include
+                android:id="@+id/includePowerUpAlarmHome"
+                layout="@layout/item_feature_alarm_home" />
+
+            <include
+                android:id="@+id/includeWakeupCheckAlarmHome"
+                layout="@layout/item_feature_alarm_home" />
+
+            <soup.neumorphism.NeumorphCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:neumorph_shadowElevation="@dimen/_2sdp"
+                app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                app:neumorph_shapeType="pressed">
+
+                <include
+                    android:id="@+id/includeLabelAlarmHome"
+                    layout="@layout/item_feature_alarm_home" />
+            </soup.neumorphism.NeumorphCardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:gravity="center"
+                    android:text="@string/snooze"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <soup.neumorphism.NeumorphButton
+                    android:id="@+id/onSnoozeAlarmHome"
+                    android:layout_width="@dimen/_55sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/_42sdp"
+                    android:gravity="center"
+                    android:text="@string/on"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary_text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_backgroundColor="@color/background"
+                    app:neumorph_shadowElevation="@dimen/_2sdp"
+                    app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    app:neumorph_shapeType="pressed" />
+
+                <soup.neumorphism.NeumorphButton
+                    android:id="@+id/offSnoozeAlarmHome"
+                    android:layout_width="@dimen/_55sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:text="@string/off"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_backgroundColor="@color/purpleTheme"
+                    app:neumorph_shadowElevation="@dimen/_1sdp"
+                    app:neumorph_shapeAppearance="@style/NeumorphismCard" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <soup.neumorphism.NeumorphCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/goalDefaultReminderSeekBar"
+                app:neumorph_shadowElevation="@dimen/_2sdp"
+                app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                app:neumorph_strokeColor="@color/stokeColor"
+                app:neumorph_strokeWidth="@dimen/_1sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/volume"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/volumeTextAlarmHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="15%" />
+
+                    <SeekBar
+                        android:id="@+id/volumeSeekBarAlarmHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:max="100"
+                        android:progress="60"
+                        android:progressTint="@color/purpleTheme"
+                        android:thumbTint="@color/purpleTheme"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/volumeTextAlarmHome" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@color/purpleTheme"
+                        android:gravity="center"
+                        android:text="@string/select_ringtone"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/volumeSeekBarAlarmHome" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </soup.neumorphism.NeumorphCardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/saveButtonAlarmHome"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/strokedroundbutton"
+        android:backgroundTint="@color/purpleTheme"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="@dimen/_12sdp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

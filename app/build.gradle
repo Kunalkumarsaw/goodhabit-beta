@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.codinghub.goodhabitbeta"
-        minSdkVersion 21
+        minSdkVersion 22
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -35,11 +35,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    ndkVersion '21.3.6528147'
 }
 
 dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
-
+    // Kotlin Coroutines
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
@@ -50,9 +51,35 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
 
-//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    //  implementation 'androidx.lifecycle:lifecycle-extensions:2.3.1'
     implementation 'androidx.preference:preference-ktx:1.1.1'
+
+    def lifecycle_version = "2.3.1"
+    def arch_version = "2.1.0"
+    // view model
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // LifeCycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
+    // Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+
+    // JetPack Compose Integration for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha04"
+
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+    // Room components
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+
+
+
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:26.1.0')
     implementation 'com.google.firebase:firebase-firestore'
@@ -69,8 +96,7 @@ dependencies {
     })
     androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
 
-    // view model
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
+
     // neumorphism
     implementation 'com.github.fornewid:neumorphism:0.3.0'
 
@@ -80,7 +106,7 @@ dependencies {
     // Rounded image view
     implementation 'com.makeramen:roundedimageview:2.3.0'
     // Volley library for network loading
-    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.android.volley:volley:1.2.0'
 
     // glide library
     implementation 'com.github.bumptech.glide:glide:4.12.0'
@@ -92,6 +118,11 @@ dependencies {
     // play services
     implementation 'com.google.android.gms:play-services-location:18.0.0'
 
+    // Rubber Seek bar
+    implementation 'com.github.Chrisvin:RubberPicker:v1.5'
+
+    // MP Android Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 
 
