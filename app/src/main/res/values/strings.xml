@@ -46,6 +46,33 @@
     <string name="stop_watch">Stop Watch</string>
     <string name="exit_preview">Exit preview</string>
     <string name="dismiss">Dismiss</string>
+    <string name="set_default">Set default</string>
+    <string name="please_enter_a_label">Please enter a label</string>
+    <string name="set_size">Set size</string>
+    <string name="label">Label</string>
+    <string name="select_missions">Select missions</string>
+    <string name="set_the_amount_and_type_of_phrases_to_be_entered_to_stop_the_alarm">Set the amount and type of phrases to be entered to stop the alarm</string>
+    <string name="motivational_phrases">Motivational phrases</string>
+    <string name="general_phrases">General phrases</string>
+    <string name="typing">Typing</string>
+    <string name="title_math_mission">Select the difficulty of the math problems you will solve to dismiss your alarm.</string>
+    <string name="title_shake_mission">Select how many times you will shake your phone to dismiss your alarm.</string>
+    <string name="shake">Shake</string>
+
+    <string name="difficulty">Difficulty</string>
+    <string name="math">Math</string>
+    <string name="title_memory_mission">Select the difficulty of the memory game you will play to dismiss your alarm.</string>
+    <string name="memory">Memory</string>
+    <string name="title_barcode_mission">Select a QR code or barcode far from your bed that you will scan to dismiss your alarm.</string>
+    <string name="or_barcode">OR/Barcode</string>
+    <string name="i">i</string>
+    <string name="wake_up_check">Wake up check</string>
+    <string name="none">Off</string>
+    <string name="_1_min">1 min</string>
+    <string name="_3_min">3 min</string>
+    <string name="_5_min">5 min</string>
+    <string name="_7_min">7 min</string>
+    <string name="_10_min">10 min</string>
 
     <string-array name="upcomingAlarmsMenu">
         <item>Edit</item>

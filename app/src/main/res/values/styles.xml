@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="fontFamily">@font/gelion_medium</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetTheme</item>
 <!--        <item name="colorAccent">@color/colorAccent</item>-->
     </style>
 <!--Custom styles-->
@@ -42,4 +43,11 @@
         <item name="cornerSize">@dimen/_7sdp</item>
     </style>
 
+<!--    For rounded bottom sheet-->
+    <style name="AppBottomSheetTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheetDialog</item>
+    </style>
+    <style name="CustomBottomSheetDialog" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rectangle_background</item>
+    </style>
 </resources>

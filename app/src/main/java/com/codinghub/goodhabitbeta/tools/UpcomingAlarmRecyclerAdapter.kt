@@ -63,6 +63,7 @@ class UpcomingAlarmRecyclerAdapter(private val alarms: List<AlarmEntity>, privat
             } else {
                 recurringUpcoming.text = alarm.getRecurringDays()
             }
+
         }
 
         holder.bind(alarm,itemClickListener)

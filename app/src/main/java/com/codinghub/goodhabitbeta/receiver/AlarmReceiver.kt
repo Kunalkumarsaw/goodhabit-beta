@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import com.codinghub.goodhabitbeta.Constants
 import java.util.*
 
@@ -12,6 +13,8 @@ class AlarmReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
 //        Toast.makeText(context, context.getText(R.string.eggs_ready), Toast.LENGTH_SHORT).show()
 
+
+        Log.d("alarm","On Receive method of BroadcastReceiver called!")
 
 
         if (!intent!!.getBooleanExtra(Constants().RECURRING, false)) {
@@ -46,6 +49,7 @@ class AlarmReceiver: BroadcastReceiver() {
             context!!.startForegroundService(intentService)
         } else {
             context!!.startService(intentService)
+            Log.d("alarm","startAlarm Service method of BroadcastReceiver called!")
         }
 
     }

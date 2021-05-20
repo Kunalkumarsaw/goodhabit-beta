@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:padding="@dimen/_15sdp">
+
+    <TextView
+        android:id="@+id/titleMemoryMission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="@string/title_memory_mission"
+        android:textAlignment="center"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintTop_toTopOf="parent" />
+    <soup.neumorphism.NeumorphCardView
+        android:layout_width="match_parent"
+        android:id="@+id/cardViewMemoryMission"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-5dp"
+        android:layout_marginEnd="-5dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleMemoryMission"
+        app:neumorph_shadowElevation="@dimen/_2sdp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCard"
+        app:neumorph_strokeColor="@color/stokeColor"
+        app:neumorph_strokeWidth="@dimen/_1sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="start|center_vertical"
+                android:text="@string/difficulty"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/difficultyLevelTitleMemoryMission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Very easy (3X3 tiles)" />
+
+            <SeekBar
+                android:id="@+id/difficultyLevelMemoryMission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:progressTint="@color/purpleTheme"
+                android:thumbTint="@color/purpleTheme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/difficultyLevelTitleMemoryMission" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </soup.neumorphism.NeumorphCardView>
+
+
+    <ImageView
+        android:id="@+id/iconMemoryMission"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:scaleType="fitXY"
+        tools:src="@drawable/memory_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewMemoryMission"
+        tools:ignore="contentDescription" />
+
+    <TextView
+        android:id="@+id/iconTitleMemoryMission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/memory"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/_20ssp"
+        app:layout_constraintEnd_toEndOf="@+id/iconMemoryMission"
+        app:layout_constraintStart_toStartOf="@+id/iconMemoryMission"
+        app:layout_constraintTop_toBottomOf="@+id/iconMemoryMission" />
+
+    <NumberPicker
+        android:id="@+id/numberPickerMemoryMission"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_90sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/iconTitleMemoryMission"
+        app:layout_constraintEnd_toStartOf="@+id/numberPickerTitleMemoryMission"
+        app:layout_constraintTop_toTopOf="@+id/iconMemoryMission" />
+
+    <TextView
+        android:id="@+id/numberPickerTitleMemoryMission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of\nProblems"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/numberPickerMemoryMission"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/numberPickerMemoryMission" />
+
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/saveMemoryMission"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_35sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:background="@color/purpleTheme"
+        android:gravity="center"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconTitleMemoryMission"
+        app:neumorph_backgroundColor="@color/purpleTheme"
+        app:neumorph_shadowElevation="@dimen/_2sdp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCard"
+        tools:layout_editor_absoluteX="33dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

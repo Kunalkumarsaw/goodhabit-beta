@@ -10,8 +10,10 @@
 <!--    Custom colors-->
     <color name="primary">#2D7DF6</color>
     <color name="background">#E4E7FB</color>
-    <color name="primary_text">#333</color>
+    <color name="primary_text">#424242</color>
+    <color name="heading_primary_text">#333</color>
     <color name="secondary_text">#7D818A</color>
+    <color name="hint_text">#808080</color>
     <color name="dark_shadow">#CDD5EA</color>
     <color name="light_shadow">#F8F9FE</color>
     <color name="dark_icon">#212121</color>

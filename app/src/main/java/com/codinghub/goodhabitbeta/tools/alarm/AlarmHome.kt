@@ -5,12 +5,14 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.lifecycleScope
 import com.codinghub.goodhabitbeta.AlarmApplication
 import com.codinghub.goodhabitbeta.R
 import com.codinghub.goodhabitbeta.databinding.ActivityAlarmHomeBinding
@@ -50,6 +52,8 @@ class AlarmHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAlarmHomeBinding.inflate(layoutInflater)
+        lifecycle.addObserver(viewModel)
+
         setContentView(binding.root)
 
         // Initializing
@@ -59,8 +63,8 @@ class AlarmHome : AppCompatActivity() {
                 timePickerAlarmHome.minute = viewModel.minute
                 timePickerAlarmHome.hour = viewModel.hour
             } else {
-                timePickerAlarmHome.setCurrentMinute(viewModel.minute)
-                timePickerAlarmHome.setCurrentHour(viewModel.hour)
+                timePickerAlarmHome.currentMinute = viewModel.minute
+                timePickerAlarmHome.currentHour = viewModel.hour
             }
             timePickerAlarmHome.setIs24HourView(true)
             timePickerAlarmHome.setOnTimeChangedListener { view, hourOfDay, minute ->
@@ -68,8 +72,8 @@ class AlarmHome : AppCompatActivity() {
                     view.minute = minute
                     view.hour = hourOfDay
                 } else {
-                    view.setCurrentMinute(minute)
-                    view.setCurrentHour(hourOfDay)
+                    view.currentMinute = minute
+                    view.currentHour = hourOfDay
                 }
                 viewModel.hour = hourOfDay
                 viewModel.minute = minute
@@ -109,11 +113,48 @@ class AlarmHome : AppCompatActivity() {
 
                 itemFeatureAlarmHomeBinding.titleItemFeatureAlarmHome.text =
                     itemFeaturesTitle[index]
+                when(index){
+                    0-> {
+                        itemFeatureAlarmHomeBinding.itemFeatureButtonAlarmHome.setOnClickListener {
+                            val bottomSheet =  AlarmBottomSheetFragment(0, viewModel)
+                            bottomSheet.show(supportFragmentManager,"MissionSheet")
+                        }
+                    }
+                    1->{
+
+                    }
+                    2->{
+                        itemFeatureAlarmHomeBinding.itemFeatureButtonAlarmHome.setOnClickListener {
+                            val bottomSheet =  AlarmBottomSheetFragment(9, viewModel)
+                            bottomSheet.show(supportFragmentManager,"WakeupSheet")
+                        }
+                    }
+                    3->{
+                        itemFeatureAlarmHomeBinding.itemFeatureButtonAlarmHome.setOnClickListener {
+                            val bottomSheet =  AlarmBottomSheetFragment(10, viewModel)
+                            bottomSheet.show(supportFragmentManager,"AlarmSheet")
+                        }
+
+                    }
+                }
                 itemFeatureAlarmHomeBinding.typeItemFeatureAlarmHome.text =
-                    viewModel.itemFeaturesStatus[index]
+                    viewModel.getFeatureStatus.value!![index]
             }
+//            viewModel.getLabel().observe(this@AlarmHome,{ value ->
+//                includeLabelAlarmHome.typeItemFeatureAlarmHome.text = value
+//                Log.d("label", " New Observer called successfully with $value")
+//            })
+
+            viewModel.getFeatureStatus.observe(this@AlarmHome, {
+                itemFeaturesRoot.forEachIndexed { index, itemFeatureAlarmHomeBinding ->
+                    itemFeatureAlarmHomeBinding.typeItemFeatureAlarmHome.text = it[index]
+                }
+                Log.d("label", "Observer called successfully with ${it[3]}")
+            })
 
             // Volume SeeK Bar
+            volumeSeekBarAlarmHome.progress = 60
+            volumeTextAlarmHome.text= volumeSeekBarAlarmHome.progress.toString().plus("%")
             volumeSeekBarAlarmHome.setOnSeekBarChangeListener(object :
                 SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(
@@ -198,6 +239,9 @@ class AlarmHome : AppCompatActivity() {
                 }
                 setPreviewAlarm(calendar)
             }
+
+            // Label Bottom sheet
+
         }
     }
 
@@ -271,6 +315,11 @@ class AlarmHome : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+    }
+
+    override fun onDestroy() {
+
+        super.onDestroy()
     }
 
     private fun updateDaysButton(index: Int, button: Button) {

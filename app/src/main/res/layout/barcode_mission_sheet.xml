@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:padding="@dimen/_15sdp">
+
+    <TextView
+        android:id="@+id/titleBarcodeMission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_barcode_mission"
+        android:textAlignment="center"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/iconBarcodeMission"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:scaleType="fitXY"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:src="@drawable/barcode_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleBarcodeMission"
+        tools:ignore="contentDescription" />
+
+    <TextView
+        android:id="@+id/iconTitleBarcodeMission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/or_barcode"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/_20ssp"
+        app:layout_constraintEnd_toEndOf="@+id/iconBarcodeMission"
+        app:layout_constraintStart_toStartOf="@+id/iconBarcodeMission"
+        app:layout_constraintTop_toBottomOf="@+id/iconBarcodeMission" />
+
+    <soup.neumorphism.NeumorphImageView
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:padding="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:src="@drawable/add_button"
+        app:layout_constraintBottom_toBottomOf="@+id/iconTitleBarcodeMission"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iconBarcodeMission"
+        app:neumorph_backgroundColor="@color/purpleTheme"
+        app:neumorph_shadowElevation="@dimen/_2sdp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCard"
+        app:neumorph_strokeColor="@color/stokeColor"
+        app:neumorph_strokeWidth="@dimen/_1sdp" />
+
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/saveBarcodeMission"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_35sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:background="@color/purpleTheme"
+        android:gravity="center"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconTitleBarcodeMission"
+        app:neumorph_backgroundColor="@color/purpleTheme"
+        app:neumorph_shadowElevation="@dimen/_2sdp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCard"
+        tools:layout_editor_absoluteX="33dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

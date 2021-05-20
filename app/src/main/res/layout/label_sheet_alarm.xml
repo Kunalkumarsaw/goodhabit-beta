@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/_20sdp"
+    android:background="@drawable/rectangle_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/headingLabelSheet"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:text="@string/label"
+        android:textColor="@color/heading_primary_text"
+        android:textSize="@dimen/_20ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/textLabelSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="300"
+        android:maxLines="3"
+        android:textSize="@dimen/_17ssp"
+        android:textColor="@color/primary_text"
+        android:hint="@string/please_enter_a_label"
+        android:textColorHint="@color/hint_text"
+        tools:hint="Please enter a label"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headingLabelSheet" />
+
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/saveLabelSheet"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@color/purpleTheme"
+        android:gravity="center"
+        android:text="@string/save"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLabelSheet"
+        app:neumorph_backgroundColor="@color/purpleTheme"
+        app:neumorph_shadowElevation="@dimen/_2sdp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCard" />
+</androidx.constraintlayout.widget.ConstraintLayout>

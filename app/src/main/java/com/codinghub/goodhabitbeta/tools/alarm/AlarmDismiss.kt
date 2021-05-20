@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.codinghub.goodhabitbeta.Constants
 import com.codinghub.goodhabitbeta.databinding.ActivityAlarmDismissBinding
 import com.codinghub.goodhabitbeta.receiver.AlarmService
+import com.codinghub.goodhabitbeta.tools.ToolsFragment
 
 
 class AlarmDismiss : AppCompatActivity() {
@@ -26,6 +27,7 @@ class AlarmDismiss : AppCompatActivity() {
             dismissButtonDismiss.setOnClickListener {
                 val intentService = Intent(applicationContext, AlarmService::class.java)
                 applicationContext.stopService(intentService)
+
                 finish()
             }
         }

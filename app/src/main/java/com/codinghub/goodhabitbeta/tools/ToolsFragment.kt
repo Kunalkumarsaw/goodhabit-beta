@@ -200,7 +200,7 @@ class ToolsFragment : Fragment(), OnItemClickListener, AdapterView.OnItemSelecte
     }
 
     // Stop watch
-    fun startChronometer() {
+    private fun startChronometer() {
         if (!running) {
             chronometer_stopwatch.base = SystemClock.elapsedRealtime() - pauseOffset
             chronometer_stopwatch.start()
@@ -214,7 +214,7 @@ class ToolsFragment : Fragment(), OnItemClickListener, AdapterView.OnItemSelecte
         }
     }
 
-    fun stopChronometer() {
+    private fun stopChronometer() {
         if (running) {
             chronometer_stopwatch.stop()
             pauseOffset = SystemClock.elapsedRealtime() - chronometer_stopwatch.base
@@ -223,7 +223,7 @@ class ToolsFragment : Fragment(), OnItemClickListener, AdapterView.OnItemSelecte
         }
     }
 
-    fun lapseChronometer() {
+    private fun lapseChronometer() {
         if (running) {
             timeLapse.add((SystemClock.elapsedRealtime() - chronometer_stopwatch.base).toString())
             val arrayAdapter = StopWatchCustomAdapter(requireContext(), timeLapse)

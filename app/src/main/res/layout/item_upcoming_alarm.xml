@@ -26,7 +26,6 @@
                 android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:background="@color/background"
                 android:buttonTint="@color/purpleTheme"
                 android:checked="true"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +78,7 @@
                 android:spinnerMode="dropdown" />
             <ImageButton
                 android:id="@+id/menuUpcoming"
-                android:layout_width="@dimen/_45sdp"
+                android:layout_width="@dimen/_40sdp"
                 android:layout_height="match_parent"
                 android:src="@drawable/update_nav"
                 tools:ignore="contentDescription"

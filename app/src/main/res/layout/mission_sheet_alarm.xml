@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/rectangle_background"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_15sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <soup.neumorphism.NeumorphImageButton
+        android:id="@+id/backButtonMissionSheet"
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:padding="@dimen/_17sdp"
+        android:src="@drawable/back_ios"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:neumorph_shadowElevation="@dimen/_2sdp" />
+
+    <TextView
+        android:id="@+id/titleMissionSheet"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/select_missions"
+        android:textColor="#504F4F"
+        android:textSize="@dimen/_18sdp"
+        app:layout_constraintEnd_toStartOf="@+id/previewButtonMissionSheet"
+        app:layout_constraintStart_toEndOf="@+id/backButtonMissionSheet"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/previewButtonMissionSheet"
+        android:layout_width="@dimen/_75sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:gravity="center"
+        android:text="@string/preview"
+        android:textAlignment="center"
+        android:textColor="@color/primary_text"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/titleMissionSheet"
+        app:layout_constraintTop_toTopOf="parent"
+        app:neumorph_shadowElevation="@dimen/_1sdp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCard"
+        app:neumorph_strokeColor="@color/stokeColor"
+        app:neumorph_strokeWidth="@dimen/_1sdp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/titleMissionSheet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="@dimen/_15sdp"
+        android:id="@+id/listViewMissionSheet"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+        android:id="@+id/linerLayoutMissionSheet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleMissionSheet"
+        android:orientation="vertical" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,6 +47,7 @@
         android:layout_marginEnd="@dimen/_10sdp"
         android:max="5000"
         android:progress="3000"
+        android:progressBackgroundTint="@color/secondary_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_reminder_goal" />

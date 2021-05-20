@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.reminder_bottom_sheet.*
 import java.util.*
 import kotlin.properties.Delegates
 
-class CupSizeBottomSheetDialogFragment(val sheetType: Int = 0) : BottomSheetDialogFragment() {
+class CupSizeBottomSheetDialogFragment(var sheetType: Int = 0) : BottomSheetDialogFragment() {
     private var selectedCup: Int = 0
     private lateinit var previousCup: ImageView
     override fun onCreateView(
@@ -124,6 +124,8 @@ class CupSizeBottomSheetDialogFragment(val sheetType: Int = 0) : BottomSheetDial
         }
 
     }
+
+
 
     fun updateColor(cupNum: Int, imageView: ImageView) {
         ImageViewCompat.setImageTintList(

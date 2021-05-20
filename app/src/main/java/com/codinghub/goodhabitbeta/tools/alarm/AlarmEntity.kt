@@ -41,6 +41,7 @@ data class AlarmEntity(
     var volumeLevel: Int,
     var isVibrating: Boolean
 ) {
+    //var typingTimesMission :Int = 0
 
 
     @JvmName("setAlarmId1")

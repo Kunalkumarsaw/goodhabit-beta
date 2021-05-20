@@ -11,7 +11,10 @@ import android.os.Build
 import android.os.IBinder
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.util.Log
 import com.codinghub.goodhabitbeta.Constants
+import com.codinghub.goodhabitbeta.MainActivity
+import com.codinghub.goodhabitbeta.tools.ToolsFragment
 import com.codinghub.goodhabitbeta.tools.alarm.AlarmDismiss
 
 
@@ -21,6 +24,7 @@ class AlarmService : Service() {
     private var vibrator: Vibrator? = null
     override fun onCreate() {
         super.onCreate()
+        Log.d("alarm","On create method of service called!")
         var alarmUri: Uri? = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
         if (alarmUri == null) {
             alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
@@ -36,6 +40,8 @@ class AlarmService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.d("alarm","On Start command method of service called!")
+
         val intentDismiss = Intent(this, AlarmDismiss::class.java)
         intentDismiss.putExtra(Constants().TITLE, intent!!.getStringExtra(Constants().TITLE))
         mediaPlayer!!.start()
@@ -53,8 +59,12 @@ class AlarmService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
+        Log.d("alarm","On Destroy method of service called!")
         mediaPlayer!!.stop()
         vibrator!!.cancel()
+        val intentToolsFragment = Intent(this, MainActivity::class.java)
+        intentToolsFragment.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intentToolsFragment)
     }
 
     override fun onBind(intent: Intent?): IBinder? {
